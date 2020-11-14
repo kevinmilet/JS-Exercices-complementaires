@@ -23,5 +23,3 @@ fetch('assets/json/productCatalog.json')
         img.src = json[0].image;
         document.getElementById('cardImg').appendChild(img);
     });
-
-
