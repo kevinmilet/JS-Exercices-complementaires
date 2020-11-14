@@ -1,9 +1,9 @@
 // initialisation de la variable qui incrémentera les ids
-let myCardId = 0;
+let newId = 0;
 
 // on récupère le fichier json
 // et on boucle pour récupérer les données
-// et pour les afficher sur les différentes card
+// pour les afficher sur les différentes card
 fetch('assets/json/productCatalog.json')
     .then(response => response.json())
     .then(json => {
@@ -17,45 +17,54 @@ fetch('assets/json/productCatalog.json')
             console.log(json[index].image);
 
             // on incrémente l'id
-            myCardId++
+            newId++
 
             // on récupère les id des éléments html de la card
             // et on les stocke dans une variable
             let card = document.getElementById('card01');
+            let cardImgDiv = document.getElementById('cardImgDiv');
             let cardImg = document.getElementById('cardImg');
+            let cardContentDiv = document.getElementById('cardContentDiv');
             let cardTitle = document.getElementById('cardTitle');
             let cardContent = document.getElementById('cardContent');
             let cardPrice = document.getElementById('cardPrice');
 
             // on clone les éléments html de la card
             let cardClone = card.cloneNode(true);
+            let cardImgDivClone = cardImgDiv.cloneNode(true);
             let cardImgClone = cardImg.cloneNode(true);
+            let cardContentDivClone = cardContentDiv.cloneNode(true);
             let cardTitleClone = cardTitle.cloneNode(true);
             let cardContentClone = cardContent.cloneNode(true);
             let cardPriceClone = cardPrice.cloneNode(true);
 
             // on incrémente les ids des éléments html de la card
-            cardClone.id = 'cardClone' + myCardId;
-            cardImgClone.id = 'cardImgClone' + myCardId;
-            cardTitleClone.id = 'cardTitleClone' + myCardId;
-            cardContentClone.id = 'cardContentClone' + myCardId;
-            cardPriceClone.id = 'cardPriceClone' + myCardId;
+            cardClone.id = 'cardClone' + newId;
+            cardImgDivClone.id = 'cardImgDivClone' + newId;
+            cardImgClone.id = 'cardImgClone' + newId;
+            cardContentDivClone.id = 'cardContentDivClone' + newId;
+            cardTitleClone.id = 'cardTitleClone' + newId;
+            cardContentClone.id = 'cardContentClone' + newId;
+            cardPriceClone.id = 'cardPriceClone' + newId;
 
             // on ajoute le clone de la card
             document.querySelector('.col').appendChild(cardClone);
 
+            // on ajoute le clone de la div qui contient l'image
+            // document.querySelector(cardClone.id).appendChild(cardImgDivClone);
+        
             // on ajoute les données sur chaque éléments html
             document.getElementById(cardClone.id).appendChild(cardImgClone);
-            document.getElementById('cardImgClone' + myCardId).src = json[index].image;
+            document.getElementById('cardImgClone' + newId).src = json[index].image;
 
             document.getElementById(cardClone.id).appendChild(cardTitleClone);
-            document.getElementById('cardTitleClone' + myCardId).innerHTML = json[index].name;
+            document.getElementById('cardTitleClone' + newId).innerHTML = json[index].name;
 
             document.getElementById(cardClone.id).appendChild(cardPriceClone);
-            document.getElementById('cardPriceClone' + myCardId).innerHTML = json[index].price + ' €';
+            document.getElementById('cardPriceClone' + newId).innerHTML = json[index].price + ' €';
 
             document.getElementById(cardClone.id).appendChild(cardContentClone);
-            document.getElementById('cardContentClone' + myCardId).innerHTML = json[index].detail;
+            document.getElementById('cardContentClone' + newId).innerHTML = json[index].detail;
         });
 
         
