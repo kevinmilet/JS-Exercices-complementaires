@@ -20,7 +20,7 @@ fetch('assets/json/productCatalog.json')
 
             // on incrémente les ids des éléments html de la card
             // et on ajoute le contenu
-            colCardClone.id = 'colcolCardClone' + newId;
+            colCardClone.id = 'colCardClone' + newId;
             document.querySelector('.row').appendChild(colCardClone);
 
             colCardClone.querySelector('#cardImg').id = 'cardImg' + newId;
