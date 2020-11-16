@@ -12,7 +12,7 @@ fetch('assets/json/productCatalog.json')
         json.forEach((element) => {
 
             // on récupère l'id la card
-            // et on les stocke dans une variable
+            // et on la stocke dans une variable
             let colCard = document.getElementById('colCard');
 
             // on clone la card
