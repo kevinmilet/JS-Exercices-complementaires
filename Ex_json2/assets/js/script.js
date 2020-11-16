@@ -5,8 +5,8 @@ function successCB(data) {
     document.write(film.title + '<br>');
     document.write(film.genres[0].name + '<br>');
     document.write(film.overview + '<br>');
-    console.log(film.backdrop_path);
-    // document.getElementById('img').src = 'https://image.tmdb.org/t/p/w500'+film.backdrop_path;
+    console.log('https://image.tmdb.org/t/p/w500/'+film.poster_path);
+    document.getElementById('img').src = '//image.tmdb.org/t/p/w500/'+film.poster_path;
 };
 
 function errorCB(data) {
