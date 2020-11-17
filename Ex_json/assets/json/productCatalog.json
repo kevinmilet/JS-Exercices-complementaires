@@ -1,13 +1,13 @@
 [{
     "name": "Product 1",
     "detail": "Lorem ipsum dolor sit amet",
-    "price": "15",
+    "price": "21",
     "hero": "OMG This just came out today!",
     "image": "https://picsum.photos/600/450"
 }, {
     "name": "Product 2",
     "detail": "Lorem ipsum dolor sit amet",
-    "price": "22",
+    "price": "80",
     "info": "This is the latest and greatest product from Derp corp.",
     "image": "https://picsum.photos/600/450"
 }, {
@@ -19,7 +19,7 @@
 }, {
     "name": "Product 4",
     "detail": "Lorem ipsum dolor sit amet",
-    "price": "36",
+    "price": "18",
     "image": "https://picsum.photos/600/450"
 }, {
     "name": "Product 5",
@@ -35,7 +35,7 @@
 }, {
     "name": "Product 7",
     "detail": "Lorem ipsum dolor sit amet",
-    "price": "14",
+    "price": "27",
     "info": "This is the latest and greatest product from Derp corp.",
     "offer": "info with offer",
     "image": "https://picsum.photos/600/450"

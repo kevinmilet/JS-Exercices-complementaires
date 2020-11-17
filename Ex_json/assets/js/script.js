@@ -118,8 +118,10 @@ btnLessExpensive.onclick = function() {
         nameArray.push(element.name);
     });
 
+    console.log(priceArray);
+    console.log(nameArray);
+    console.log(products)
     let lessExpensivePrice = Math.min.apply(null, priceArray);
-    // let productMoreExp = Math.max.apply(null, nameArray);
 
     alert('Le prix le moins élevé est de ' + lessExpensivePrice + ' €');
 }
