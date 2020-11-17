@@ -2,7 +2,12 @@
 
 // stockage de l'adresse du fichier json dans une constante
 const productCatalog = 'assets/json/productCatalog.json';
-let total = 0
+
+// initialisation des variables pour les calculs
+let total = 0;
+let average = 0;
+let moreExpensice = 0;
+let lessExpensive = 0;
 
 
 // initialisation de la variable qui incrémentera les ids
@@ -73,3 +78,16 @@ btnTotal.onclick = function() {
     });
     alert('Le total des produits est de: ' + total + ' €');
 }
+
+
+// fonction qui retourne la moyenne des prix
+btnAverage.onclick = function() {
+    // on boucle sur le tableau récupéré grace au fetch()
+    products.forEach((element) => {
+        average += parseInt(element.price) / products.length;
+    });
+    alert('La moyenne du prix des produits est de: ' + average.toFixed(2) + ' €');
+}
+
+
+//fonction qui retourne le prix le plus élevé
