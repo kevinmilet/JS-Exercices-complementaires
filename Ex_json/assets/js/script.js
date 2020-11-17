@@ -6,8 +6,11 @@ const productCatalog = 'assets/json/productCatalog.json';
 // initialisation des variables pour les calculs
 let total = 0;
 let average = 0;
-let moreExpensice = 0;
-let lessExpensive = 0;
+let moreExpensivePrice = 0;
+let lessExpensivePrice = 0;
+let priceArray = [];
+let nameArray = [];
+let productMoreExp = 0;
 
 
 // initialisation de la variable qui incrémentera les ids
@@ -91,3 +94,32 @@ btnAverage.onclick = function() {
 
 
 //fonction qui retourne le prix le plus élevé
+btnMoreExpensive.onclick = function() {
+    // on boucle sur le tableau récupéré grace au fetch()
+    products.forEach((element) => {
+
+        priceArray.push(element.price);
+        nameArray.push(element.name);
+    });
+
+    let moreExpensivePrice = Math.max.apply(null, priceArray);
+    // let productMoreExp = Math.max.apply(null, nameArray);
+
+    alert('Le prix le plus élevé est de ' + moreExpensivePrice + ' €');
+}
+
+
+//fonction qui retourne le prix le moins élevé
+btnLessExpensive.onclick = function() {
+    // on boucle sur le tableau récupéré grace au fetch()
+    products.forEach((element) => {
+
+        priceArray.push(element.price);
+        nameArray.push(element.name);
+    });
+
+    let lessExpensivePrice = Math.min.apply(null, priceArray);
+    // let productMoreExp = Math.max.apply(null, nameArray);
+
+    alert('Le prix le moins élevé est de ' + lessExpensivePrice + ' €');
+}
