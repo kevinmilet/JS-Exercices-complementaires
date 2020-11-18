@@ -83,8 +83,6 @@ btnTotal.onclick = function () {
     });
 
     alert(`Le total des produits est de: ${total} €`);
-
-    // document.getElementById('modalTotalContent').innerHTML = 'Le total des produits est de: ' + total + ' €';
 };
 
 
