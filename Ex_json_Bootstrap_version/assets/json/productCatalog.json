@@ -39,4 +39,11 @@
     "info": "This is the latest and greatest product from Derp corp.",
     "offer": "info with offer",
     "image": "https://picsum.photos/600/450"
-}]
+}, {
+    "name": "Product 8",
+    "detail": "Lorem ipsum dolor sit amet",
+    "price": "32.80",
+    "offer": "No srsly GTFO",
+    "image": "https://picsum.photos/600/450"
+}
+]
