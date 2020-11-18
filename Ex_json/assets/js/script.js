@@ -1,25 +1,21 @@
-// Variables
-
 // stockage de l'adresse du fichier json dans une constante
 const productCatalog = 'assets/json/productCatalog.json';
 
-// initialisation des variables pour les calculs
+// initialisation des variables utilisées dans les fonctions
 let total = 0;
 let average = 0;
 let moreExpensivePrice = 0;
 let lessExpensivePrice = 0;
+let position = 0;
+let product = 0;
+
+// initialisation variables pour les tableaux
+let products = [];
 let priceArray = [];
 let nameArray = [];
-let productMoreExp = 0;
-
 
 // initialisation de la variable qui incrémentera les ids
 let newId = 0;
-
-
-// initialisation du tableau qui récupérera les données
-let products = [];
-
 
 // initialisation des boutons
 const btnTotal = document.querySelector('#btnTotal');
@@ -27,6 +23,11 @@ const btnAverage = document.querySelector('#btnAverage');
 const btnMoreExpensive = document.querySelector('#btnMoreExpensive');
 const btnLessExpensive = document.querySelector('#btnLessExpensive');
 
+// initialisation des modales
+// document.addEventListener('DOMContentLoaded', function() {
+//     var elems = document.querySelectorAll('.modal');
+//     var instances = M.Modal.init(elems, options);
+//   });
 
 // on récupère le fichier json
 fetch(productCatalog)
@@ -74,54 +75,60 @@ function appendDom(products) {
 
 
 // fonction qui retourne le total du prix des articles
-btnTotal.onclick = function() {
+btnTotal.onclick = function () {
+    let total = 0;
     // on boucle sur le tableau récupéré grace au fetch()
     products.forEach((element) => {
-        total += parseInt(element.price);
+        total += parseFloat(element.price);
     });
-    alert('Le total des produits est de: ' + total + ' €');
-}
+
+    alert(`Le total des produits est de: ${total} €`);
+
+    // document.getElementById('modalTotalContent').innerHTML = 'Le total des produits est de: ' + total + ' €';
+};
 
 
 // fonction qui retourne la moyenne des prix
-btnAverage.onclick = function() {
+btnAverage.onclick = function () {
+    let average = 0;
     // on boucle sur le tableau récupéré grace au fetch()
     products.forEach((element) => {
-        average += parseInt(element.price) / products.length;
+        average += parseFloat(element.price) / products.length;
     });
-    alert('La moyenne du prix des produits est de: ' + average.toFixed(2) + ' €');
-}
+
+    alert(`La moyenne du prix des produits est de: ${average.toFixed(2)} €`);
+};
 
 
 //fonction qui retourne le prix le plus élevé
-btnMoreExpensive.onclick = function() {
-    // on boucle sur le tableau récupéré grace au fetch()
-    products.forEach((element) => {
+btnMoreExpensive.onclick = function () {
 
-        priceArray.push(element.price);
-        nameArray.push(element.name);
-    });
+    products = products.filter(element => (!isNaN(element.price) && element.price) ?? element.price);
 
-    let moreExpensivePrice = Math.max.apply(null, priceArray);
-    // let productMoreExp = Math.max.apply(null, nameArray);
+    let priceArray = products.map(element => parseFloat(element.price));
 
-    alert('Le prix le plus élevé est de ' + moreExpensivePrice + ' €');
-}
+    let position = priceArray.indexOf(Math.max(...priceArray));
+
+    let moreExpensivePrice = Math.max(...priceArray);
+
+    let product = products[position].name;
+
+    alert(`Le prix le plus élevé est celui du produit ${product} au prix de ${moreExpensivePrice} €`);
+};
 
 
 //fonction qui retourne le prix le moins élevé
-btnLessExpensive.onclick = function() {
-    // on boucle sur le tableau récupéré grace au fetch()
-    products.forEach((element) => {
+btnLessExpensive.onclick = function () {
 
-        priceArray.push(element.price);
-        nameArray.push(element.name);
-    });
+    products = products.filter(element => (!isNaN(element.price) && element.price) ?? element.price);
 
-    console.log(priceArray);
-    console.log(nameArray);
-    console.log(products)
-    let lessExpensivePrice = Math.min.apply(null, priceArray);
+    let priceArray = products.map(element => parseFloat(element.price));
 
-    alert('Le prix le moins élevé est de ' + lessExpensivePrice + ' €');
-}
+    let position = priceArray.indexOf(Math.min(...priceArray));
+
+    let lessExpensivePrice = Math.min(...priceArray);
+
+    let product = products[position].name;
+
+    alert(`Le prix le moins élevé est celui du produit ${product} au prix de ${lessExpensivePrice} €`);
+};

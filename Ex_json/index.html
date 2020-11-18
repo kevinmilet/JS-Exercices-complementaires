@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-
+        <!-- squelette des cartes, chaché par défaut en css -->
         <div class="row">
             <div class="col l4 m6 s12" id="colCard">
 
@@ -32,15 +32,30 @@
             </div>
         </div>
 
+        <!-- Bouton appellant les différentes fonctions -->
         <div class="row">
-            <div class="col l12 m12 s8">
-                <button class="btn waves-effect waves-light" type="submit" id="btnTotal">Total</button>
-                <button class="btn waves-effect waves-light" type="submit" id="btnAverage">Moyenne</button>
-                <button class="btn waves-effect waves-light" type="submit" id="btnMoreExpensive">+ cher</button>
-                <button class="btn waves-effect waves-light" type="submit" id="btnLessExpensive">- cher</button>
+            <div class="col l12 m12 s8 center center-align">
+                <a class="waves-effect waves-light btn modal-trigger" id="btnTotal" href="#modalTotal">Total</a>
+                <a class="btn waves-effect waves-light" id="btnAverage" href="#modalAverage">Moyenne</a>
+                <a class="btn waves-effect waves-light" id="btnMoreExpensive" href="#modalMoreExp">+ cher</a>
+                <a class="btn waves-effect waves-light" id="btnLessExpensive" href="#modalLessExp">- cher</a>
+            </div>
+        </div>
+
+        <!-- Modales affichant les résultats-->
+        <div id="modalTotal" class="modal">
+            <div class="modal-content">
+                <h4>Total</h4>
+                <p id="modalTotalContent"></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
             </div>
         </div>
     </div>
+
+
+   
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
