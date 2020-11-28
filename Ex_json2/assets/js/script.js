@@ -1,27 +1,37 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
+const api_key = 'e1244bd8733b1e1b4c4c313ea409e081';
+let movieNameStr = document.querySelector('#searchBar').value;
+const searchBtn = document.querySelector('#searchBtn');
 
-    function successCB(data) {
-        // console.log("Success callback: " + data);
-        let film = JSON.parse(data);
-        console.log(film);
-        document.write(film.title + '<br>');
-        document.write(film.genres[0].name + '<br>');
-        document.write(film.overview + '<br>');
-        console.log(`https://image.tmdb.org/t/p/w500/${film.poster_path}`);
-        console.log(document.getElementById('img'));
-        document.getElementById("img").src = `https://image.tmdb.org/t/p/w500/${film.poster_path}`;
-    };
+// console.log(movieNameStr.value)
+searchBtn.addEventListener('click', getMovie(movieNameStr));
 
-    function errorCB(data) {
-        console.log("Error callback: " + data);
-    };
+function movie(id, title, overview, poster_path, release_date) {
+    this.id = id;
+    this.title = title;
+    this.overview = overview;
+    this.poster_path = poster_path;
+    this.release_date = release_date;
+    this.genre = genres;
+}
 
-    theMovieDb.movies.getById({
-        "id": 76203
-    }, successCB, errorCB);
-})
-
-
-
-// console.log(document.getElementById('img'));
+function getMovie(movieNameStr) {
+    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=fr-FR&query=${movieNameStr}&page=1&include_adult=false`)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data)
+        // for (let i = 0; i < data.lenght; i++) {
+        //     return data.results[i];
+        //  }
+         return data.results[0];
+    })
+    .then(function(movieObj) {
+        let movieDetails = movieObj;
+        console.log(movieDetails.id);
+        console.log(movieDetails.title);
+        console.log(movieDetails.overview);
+        console.log(movieDetails.release_date);
+        console.log(movieDetails.poster_path);
+    })
+}
