@@ -24,7 +24,7 @@ function getMovie(movieNameStr) {
     })
     .then(function(data) {
         console.log(data)
-        console.log(dataArray);
+        
         // for (let i = 0; i < data.lenght; i++) {
         //     return data.results[i];
         //  }
